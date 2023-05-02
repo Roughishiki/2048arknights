@@ -12,5 +12,7 @@
         <file>resources/level256.png</file>
         <file>resources/loading.png</file>
         <file>resources/login.png</file>
+        <file>resources/level.png</file>
+        <file>resources/level512.png</file>
     </qresource>
 </RCC>
