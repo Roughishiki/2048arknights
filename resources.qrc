@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/axqsx-7wyta-001.ico</file>
+        <file>resources/level1.png</file>
+        <file>resources/level2.png</file>
+        <file>resources/level4.png</file>
+        <file>resources/level8.png</file>
+        <file>resources/level16.png</file>
+        <file>resources/level32.png</file>
+        <file>resources/level64.png</file>
+        <file>resources/level128.png</file>
+        <file>resources/level256.png</file>
+        <file>resources/loading.png</file>
+        <file>resources/login.png</file>
+    </qresource>
+</RCC>
