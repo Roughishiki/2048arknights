@@ -73,42 +73,51 @@ for(int i=0;i<4;i++)
        else if(s[i][j]==16)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level16"));
        }
        else if(s[i][j]==32)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level32"));
        }
        else if(s[i][j]==64)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level64"));
        }
        else if(s[i][j]==128)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level128"));
        }
        else if(s[i][j]==256)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level256"));
        }
        else if(s[i][j]==512)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level512"));
        }
        else if(s[i][j]==1024)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level"));
        }
        else if(s[i][j]==2048)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2048"));
+       }
+       else
+       {
+           p.setBrush(Qt::darkBlue);
+           p.drawRect(i*60+40,j*60+120,55,55);
+           p.setPen(Qt::black);
+           p.setFont(QFont("微软雅黑",10,700,false));
+           p.drawText(QRect(i*60+40,j*60+120,55,55),QString::number(s[i][j]),QTextOption(Qt::AlignCenter));
+
        }
 
 
@@ -121,6 +130,221 @@ setWindowIcon(QIcon(":/resources/axqsx-7wyta-001"));
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
+    if(!state)
+  {
+    return;
+
+  }
+    switch(event->key())
+    {
+    case Qt::Key_W:
+        Pressup();
+        break;
+     case Qt::Key_A:
+        PressLeft();
+        break;
+    case Qt::Key_S:
+        Pressdown();
+        break;
+    case Qt::Key_D:
+        PressRight();
+        break;
+    default:
+        return;
+    }
+    //myrand();
+    update();
+
+}
+void MainWindow::slotStart()
+{
+    //游戏开始或重新的初始化过程
+    QMessageBox::about(this,"游戏规则","WASD控制全部方块上下左右移动");
+    score=0;
+    for(int i=0;i<4;i++)
+    {
+        for(int j=0;j<4;j++)
+        {
+            s[i][j]=0;
+
+        }
+
+    }
+    button->setText("重新游戏");
+    int randi=qrand()%4;//
+    int randj=qrand()%4;
+    s[randi][randj]=2;
+    state =true;
+    update();
+
+}
+
+void MainWindow::Pressup()
+{
+    for(int i=0;i<4;i++)
+    {
+        for(int j=1;j<4;j++)
+        {
+            if(s[i][j]=0)
+            {
+                continue;
+
+            }
+            for(int p=0;p<j;p++)
+            {
+                if(s[i][p]==0)
+                {
+                    s[i][p]=s[i][j];
+                    s[i][j]=0;
+                    break;
+
+                }
+
+            }
+
+        }
+
+    }
+    //相加
+    for(int i=0;i<4;i++)
+    {
+        for(int j =0;j<4;j++)
+        {
+            if(s[i][j]==s[i][j+1])
+            {
+                s[i][j]=2*s[i][j];
+                s[i][j+1]=0;
+                score+=s[i][j];
+                for(int p=j+2;p<4;p++)
+                {
+                    s[i][p-1]=s[i][p];
+                    s[i][p]=0;
+                }
+
+            }
+
+
+        }
+
+    }
+
+
+}
+void MainWindow::Pressdown()
+{
+    //移动
+        for (int i=0;i<4;i++) {
+            for (int j=2;j>=0;j--) {
+                if(s[i][j]==0)continue;
+                for (int p=3;p>j;p--) {
+                    //查看前面是否有空格子可移动
+                    if(s[i][p]==0){
+                        s[i][p]=s[i][j];
+                        s[i][j]=0;
+                        break;
+                    }
+                }
+            }
+        }
+        //相加
+        for (int i=0;i<4;i++) {
+            for (int j=3;j>0;j--) {
+                if(s[i][j]==s[i][j-1]){
+                    s[i][j]=2*s[i][j];
+                    s[i][j-1]=0;
+                    score+=s[i][j];
+                    for (int p=j-2;p>=0;p--)
+                    {
+                        s[i][p+1]=s[i][p];
+                        s[i][p]=0;
+                    }
+                }
+            }
+        }
+
+
+
+}
+void MainWindow::PressLeft()
+{
+    for (int j=0;j<4;j++) {
+            for (int i=1;i<4;i++) {
+                if(s[i][j]==0){
+                    continue;
+                }
+                for (int p=0;p<i;p++) {
+                    //查看前面是否有空格可移入
+                    if(s[p][j] == 0){
+                        s[p][j] = s[i][j];
+                        s[i][j] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+
+
+
+    //相加
+    for(int j=0;j<4;j++)
+    {
+        for(int i=0;i<3;i++)
+        {
+            if(s[i][j]==s[i+1][j])
+            {
+                s[i][j]=s[i][j]*2;
+                score+=s[i][j];
+                s[i+1][j]=0;
+                for(int p=i+2;p<4;p++)
+                {
+                    s[p-1][j]=s[p][j];
+                    //s[p][j]=0;
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+void MainWindow::PressRight()
+{
+    //移动
+        for (int j=0;j<4;j++) {
+            for (int i=2;i>=0;i--) {
+                if(s[i][j]==0){
+                    continue;
+                }
+                for (int p=3;p>i;p--) {
+                    //查看前面是否有空格可移入
+                    if(s[p][j] == 0){
+                        s[p][j] = s[i][j];
+                        s[i][j] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+        //相加
+        for (int j=0;j<4;j++)
+        {
+            for (int i=3;i>=0;i--)
+            {
+                if(s[i][j]==s[i-1][j])
+                {
+                    s[i][j]=s[i][j]*2;
+                    s[i-1][j]=0;
+                    score+=s[i][j];
+                    for(int p=i-2;p>=0;p--)
+                    {
+                        s[p+1][j] = s[p][j];
+                        s[p][j]=0;
+                    }
+                }
+            }
+        }
 
 
 

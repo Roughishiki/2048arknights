@@ -17,5 +17,6 @@
         <file>resources/login1.png</file>
         <file>resources/config.json</file>
         <file>resources/laiyin.ico</file>
+        <file>resources/level2048.png</file>
     </qresource>
 </RCC>

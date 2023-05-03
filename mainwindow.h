@@ -3,8 +3,10 @@
 #include "LogWidget.h"
 #include <QMainWindow>
 #include<QPushButton>
+#include<QMessageBox>
 #include<QTime>
 #include<QPainter>
+#include<QKeyEvent>
 #include<QIcon>
 #include<QPen>
 QT_BEGIN_NAMESPACE
@@ -23,7 +25,11 @@ public:
     QPushButton *button;
     int s[4][4];
     int score=0;
-    bool state;
+    void Pressup();
+    void Pressdown();
+    void PressLeft();
+    void PressRight();
+    bool state;//true false 判断状态
 public:
     void slotStart();
 private:
