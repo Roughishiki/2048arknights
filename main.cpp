@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "splashscreen.h"
+#include "LogWidget.h"
 #include <QApplication>
 #include <QObject>
 #include <QSplashScreen>

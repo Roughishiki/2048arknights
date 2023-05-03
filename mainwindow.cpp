@@ -6,6 +6,13 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    m_log = new LogWidget;
+        // 调用登录窗口的show()函数显示登录界面
+        m_log->show();
+
+        // 建立信号槽，到接收到登录界面发来的login()信号后，调用主窗口的show()函数。
+        connect(m_log,SIGNAL(login()),this,SLOT(show()));
+
     for(int i=0;i<4;i++)
     {
         for(int j=0;j<4;j++)
@@ -20,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
     //随机函数
     qsrand(uint(QTime(0,0,0).secsTo(QTime::currentTime())));
 connect(button,SIGNAL(clicked()),this,SLOT(slotStart()));
+
 }
 
 MainWindow::~MainWindow()

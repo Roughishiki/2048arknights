@@ -1,0 +1,33 @@
+#include "login.h"
+#include "ui_login.h"
+
+LogWidget::LogWidget(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::LogWidget)
+{
+    ui->setupUi(this);
+    // connect 3个信号槽
+    // 触发重置按钮的信号槽连接
+    connect(ui->btn_clear,SIGNAL(clicked()),this,SLOT(btn_clear_clicked()));
+    // 触发登录按钮的信号槽连接
+    connect(ui->btn_log,SIGNAL(clicked()),this,SLOT(btn_log_clicked()));
+    // 发出信号后关闭登录窗口的信号槽连接
+    connect(this,SIGNAL(close_window()),this,SLOT(close()));
+}
+
+// 清理输入栏
+void LogWidget::btn_clear_clicked()
+{
+    ui->edit_pw->clear();
+    ui->edit_name->clear();
+}
+
+// 登录按钮触发事件
+void LogWidget::btn_log_clicked()
+{  
+    // 发出登录信号
+    emit(login());
+   // 发出关闭窗口信号
+    emit(close_window());
+}
+

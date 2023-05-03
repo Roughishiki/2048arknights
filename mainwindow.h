@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "LogWidget.h"
 #include <QMainWindow>
 #include<QPushButton>
 #include<QTime>
@@ -28,5 +28,6 @@ public:
     void slotStart();
 private:
     Ui::MainWindow *ui;
+    LogWidget * m_log;
 };
 #endif // MAINWINDOW_H
