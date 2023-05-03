@@ -18,5 +18,9 @@
         <file>resources/config.json</file>
         <file>resources/laiyin.ico</file>
         <file>resources/level2048.png</file>
+        <file>resources/backgame.png</file>
+        <file>resources/over1.png</file>
+        <file>resources/over2.png</file>
+        <file>resources/over3.png</file>
     </qresource>
 </RCC>

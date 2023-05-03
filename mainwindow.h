@@ -9,7 +9,11 @@
 #include<QKeyEvent>
 #include<QIcon>
 #include<QPen>
-
+#include<QPalette>
+#include <QMenuBar>
+#include <QMenu>
+#include<QToolBar>
+#include<QLabel>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -31,6 +35,9 @@ public:
     void PressLeft();
     void PressRight();
     void myRand();
+    void gameover1();
+    void gameover2();
+    void gameover3();
     struct Ns
     {
         int i;
@@ -43,5 +50,7 @@ public slots:
 private:
     Ui::MainWindow *ui;
     LogWidget * m_log;
+    QLabel*		 m_gameOver;
+    QLabel*		 m_gameOverText;
 };
 #endif // MAINWINDOW_H

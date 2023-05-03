@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 
     MainWindow x;
   // x.show();
-    x.setFixedSize(320,480);
+    x.setFixedSize(480,480);
     x.setWindowTitle("2048arknights");
 
 

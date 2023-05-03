@@ -22,8 +22,25 @@ MainWindow::MainWindow(QWidget *parent)
         }
 
     }
+    QMenuBar *mBar = menuBar();
+
+        QMenu *pFile = mBar->addMenu(QStringLiteral("选项"));
+
+        QAction *pNew = pFile->addAction(QStringLiteral("音乐"));
+        connect(pNew, &QAction::triggered,
+                    [=]()
+                    {
+                        qDebug() << QStringLiteral("新建被按下");
+                    }
+                    );
+            pFile->addSeparator();
+
+
     button=new QPushButton("开始游戏",this);
     button->setGeometry(60,400,200,50);
+    QPalette pal =this->palette();
+    pal.setBrush(QPalette::Background,QBrush(QPixmap(":/resources/backgame.png")));
+    setPalette(pal);
     //随机函数
     qsrand(uint(QTime(0,0,0).secsTo(QTime::currentTime())));
     connect(button,SIGNAL(clicked()),this,SLOT(slotStart()));
@@ -52,7 +69,7 @@ for(int i=0;i<4;i++)
        p.setPen(Qt::transparent);
        if(s[i][j]==0)
        {
-           p.setBrush(QBrush(QColor(181,180,180,70)));
+           p.setBrush(QBrush(QColor(189,252,201,95)));
            p.drawRect(i*60+40,j*60+120,55,55);
        }
        else if(s[i][j]==2)
@@ -152,7 +169,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     default:
         return;
     }
-    //myrand();
+    myRand();
     update();
 
 }
@@ -161,6 +178,9 @@ void MainWindow::slotStart()
     //游戏开始或重新的初始化过程
     QMessageBox::about(this,"游戏规则","WASD控制全部方块上下左右移动");
     score=0;
+    QPalette pal =this->palette();
+    pal.setBrush(QPalette::Background,QBrush(QPixmap(":/resources/backgame.png")));
+    setPalette(pal);
     for(int i=0;i<4;i++)
     {
         for(int j=0;j<4;j++)
@@ -403,9 +423,52 @@ void MainWindow::myRand()
             }
 
         }
-        QMessageBox::about(this,"游戏结束","分数为："+QString::number(score)+" ");
-        return;
+        if(score<=1024)
+        {
+            gameover1();
+
+            return;
+        }
+        else if(score>1024&&score<=3000)
+        {
+            gameover2();
+
+            return;
+        }
+        else if(score>3000)
+        {
+            gameover3();
+
+            return;
+        }
     }
     int rand=qrand()%ni;
         s[n[rand].i][n[rand].j]=2;
+}
+void MainWindow::gameover1()
+{
+    QMessageBox::about(this,"继续加油","分数为："+QString::number(score)+" ");
+    QPalette pal =this->palette();
+    pal.setBrush(QPalette::Background,QBrush(QPixmap(":/resources/over1.png")));
+    setPalette(pal);
+
+
+}
+void MainWindow::gameover2()
+{
+    QMessageBox::about(this,"再接再厉","分数为："+QString::number(score)+" ");
+    QPalette pal =this->palette();
+    pal.setBrush(QPalette::Background,QBrush(QPixmap(":/resources/over2.png")));
+    setPalette(pal);
+
+
+}
+void MainWindow::gameover3()
+{
+    QMessageBox::about(this,"大获全胜","分数为："+QString::number(score)+" ");
+    QPalette pal =this->palette();
+    pal.setBrush(QPalette::Background,QBrush(QPixmap(":/resources/over3.png")));
+    setPalette(pal);
+
+
 }
