@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
         while (time.secsTo(curTime)<=5)
         {
             QString str = QString("%1:%2").arg("正在建立精神链接").arg(QString::number(time.secsTo(curTime)));
-            sp->showMessage(str,Qt::AlignBottom,QColor(255,255,255,80));
+            sp->showMessage(str,Qt::AlignBottom,QColor(255,255,255,100));
             curTime=QDateTime::currentDateTime();
             a.processEvents();
         }
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 
     MainWindow x;
   // x.show();
-    x.setFixedSize(420,380);
+    x.setFixedSize(320,480);
     x.setWindowTitle("2048arknights");
 
 

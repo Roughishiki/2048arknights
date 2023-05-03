@@ -9,6 +9,7 @@
 #include<QKeyEvent>
 #include<QIcon>
 #include<QPen>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -29,8 +30,15 @@ public:
     void Pressdown();
     void PressLeft();
     void PressRight();
+    void myRand();
+    struct Ns
+    {
+        int i;
+        int j;
+
+    };
     bool state;//true false 判断状态
-public:
+public slots:
     void slotStart();
 private:
     Ui::MainWindow *ui;

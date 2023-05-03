@@ -23,10 +23,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     }
     button=new QPushButton("开始游戏",this);
-    button->setGeometry(80,400,200,50);
+    button->setGeometry(60,400,200,50);
     //随机函数
     qsrand(uint(QTime(0,0,0).secsTo(QTime::currentTime())));
-connect(button,SIGNAL(clicked()),this,SLOT(slotStart()));
+    connect(button,SIGNAL(clicked()),this,SLOT(slotStart()));
 
 }
 
@@ -58,57 +58,57 @@ for(int i=0;i<4;i++)
        else if(s[i][j]==2)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap(":/resources/level2.png"));
        }
        else if(s[i][j]==4)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level4"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap(":/resources/level4.png"));
        }
        else if(s[i][j]==8)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level8"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap(":/resources/level8.png"));
        }
        else if(s[i][j]==16)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level16"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap(":/resources/level16.png"));
        }
        else if(s[i][j]==32)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level32"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap(":/resources/level32.png"));
        }
        else if(s[i][j]==64)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level64"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap(":/resources/level64.png"));
        }
        else if(s[i][j]==128)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level128"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap(":/resources/level128.png"));
        }
        else if(s[i][j]==256)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level256"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap(":/resources/level256.png"));
        }
        else if(s[i][j]==512)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level512"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap(":/resources/level512.png"));
        }
        else if(s[i][j]==1024)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap(":/resources/level.png"));
        }
        else if(s[i][j]==2048)
        {
            p.setPen(pen);
-           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2048"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap(":/resources/level2048.png"));
        }
        else
        {
@@ -185,7 +185,7 @@ void MainWindow::Pressup()
     {
         for(int j=1;j<4;j++)
         {
-            if(s[i][j]=0)
+            if(s[i][j]==0)
             {
                 continue;
 
@@ -348,4 +348,64 @@ void MainWindow::PressRight()
 
 
 
+}
+
+void MainWindow::myRand()
+{
+    //找空的格子
+    int i=0;
+    int j=0;
+    //
+    struct Ns n[15];
+    int ni=0;
+    for(i=0;i<4;i++)
+    {
+        for(j=0;j<4;j++)
+        {
+            if(s[i][j]==0)
+            {
+                n[ni].i=i;
+                n[ni].j=j;
+                ni++;
+            }
+
+        }
+
+    }
+    //判断是否结束
+    if(ni==0)
+    {
+        for(i=0;i<4;i++)
+        {
+            for(j=0;j<3;j++)
+            {
+                if(s[i][j]==s[i][j+1])
+                {
+                    return;
+                }
+
+
+
+            }
+
+        }
+        for(j=0;j<4;j++)
+        {
+            for(i=0;i<3;i++)
+            {
+                if(s[i][j]==s[i+1][j])
+                {
+                    return;
+                }
+
+
+
+            }
+
+        }
+        QMessageBox::about(this,"游戏结束","分数为："+QString::number(score)+" ");
+        return;
+    }
+    int rand=qrand()%ni;
+        s[n[rand].i][n[rand].j]=2;
 }
