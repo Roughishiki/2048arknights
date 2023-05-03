@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
         sp = nullptr;
 
     MainWindow x;
-   x.show();
+  // x.show();
     x.setFixedSize(420,380);
     x.setWindowTitle("2048舟舟");
 
