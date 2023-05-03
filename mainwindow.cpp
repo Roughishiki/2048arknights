@@ -52,14 +52,65 @@ for(int i=0;i<4;i++)
        p.setPen(Qt::transparent);
        if(s[i][j]==0)
        {
-           p.setBrush(QBrush(QColor(255,243,10,70)));
-       p.drawRect(i*60+40,j*60+120,55,55);
+           p.setBrush(QBrush(QColor(181,180,180,70)));
+           p.drawRect(i*60+40,j*60+120,55,55);
        }
        else if(s[i][j]==2)
        {
            p.setPen(pen);
-           p.drawPixmap(0,180,80,80,QPixmap("../resources/level2"));
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
        }
+       else if(s[i][j]==4)
+       {
+           p.setPen(pen);
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level4"));
+       }
+       else if(s[i][j]==8)
+       {
+           p.setPen(pen);
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level8"));
+       }
+       else if(s[i][j]==16)
+       {
+           p.setPen(pen);
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+       }
+       else if(s[i][j]==32)
+       {
+           p.setPen(pen);
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+       }
+       else if(s[i][j]==64)
+       {
+           p.setPen(pen);
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+       }
+       else if(s[i][j]==128)
+       {
+           p.setPen(pen);
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+       }
+       else if(s[i][j]==256)
+       {
+           p.setPen(pen);
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+       }
+       else if(s[i][j]==512)
+       {
+           p.setPen(pen);
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+       }
+       else if(s[i][j]==1024)
+       {
+           p.setPen(pen);
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+       }
+       else if(s[i][j]==2048)
+       {
+           p.setPen(pen);
+           p.drawPixmap(i*60+40,j*60+120,55,55,QPixmap("../resources/level2"));
+       }
+
 
        }
    }
