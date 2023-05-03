@@ -58,7 +58,7 @@ for(int i=0;i<4;i++)
        else if(s[i][j]==2)
        {
            p.setPen(pen);
-           p.drawPixmap(0,180,80,80,QPixmap("../resources/level1"));
+           p.drawPixmap(0,180,80,80,QPixmap("../resources/level2"));
        }
 
        }

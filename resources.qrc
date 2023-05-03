@@ -15,5 +15,7 @@
         <file>resources/level.png</file>
         <file>resources/level512.png</file>
         <file>resources/login1.png</file>
+        <file>resources/config.json</file>
+        <file>resources/laiyin.ico</file>
     </qresource>
 </RCC>

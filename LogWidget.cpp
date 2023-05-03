@@ -15,10 +15,11 @@ LogWidget::LogWidget(QWidget *parent) :
     connect(this,SIGNAL(close_window()),this,SLOT(close()));
 
     ui->edit_pw->setEchoMode(QLineEdit::Password);//输入的时候就显示圆点
-    m_username = "wuyongwen";
-    m_password = "wuyongwen";
+    m_username = "2212384";
+    m_password = "NAOnao040209";
     // 读取json文件
     read_json();
+    setWindowIcon(QIcon(":/resources/laiyin.ico"));
 }
 
 LogWidget::~LogWidget()
@@ -29,7 +30,7 @@ LogWidget::~LogWidget()
 void LogWidget::read_json()
 {
     //打开文件
-    QFile file(QApplication::applicationDirPath()+"/config.json");
+    QFile file(QApplication::applicationDirPath()+":/resources/config.json");
     if(!file.open(QIODevice::ReadOnly)) {
         qDebug() << "File open failed!";
     } else {
@@ -84,7 +85,7 @@ void LogWidget::btn_log_clicked()
 // 更新json文件
 void LogWidget::write_json()
 {
-    QFile file(QApplication::applicationDirPath()+"/config.json");
+    QFile file(QApplication::applicationDirPath()+":/resources/config.json");
     if(!file.open(QIODevice::WriteOnly)) {
         qDebug() << "File open failed!";
     } else {
