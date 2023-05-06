@@ -10,8 +10,8 @@
 #include <QJsonObject>
 #include<QPainter>
 #include <QByteArray>
-
-
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
 namespace Ui {
 class LogWidget;
 }

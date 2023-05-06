@@ -22,5 +22,7 @@
         <file>resources/over1.png</file>
         <file>resources/over2.png</file>
         <file>resources/over3.png</file>
+        <file>music/EP1 -Morning Dew.mp3</file>
+        <file>music/EP2 -Dormant Craving.mp3</file>
     </qresource>
 </RCC>

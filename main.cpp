@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     QWidget w;
-    w.setWindowTitle("登录");
+    w.setWindowTitle("加载");
         QPixmap pixmap(":/resources/loading.png");
         QSplashScreen *sp = new QSplashScreen(pixmap);
 

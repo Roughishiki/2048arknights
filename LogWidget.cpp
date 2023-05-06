@@ -1,6 +1,6 @@
 #include "LogWidget.h"
 #include "ui_LogWidget.h"
-
+#include<bits/stdc++.h>
 LogWidget::LogWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::LogWidget)
@@ -20,6 +20,22 @@ LogWidget::LogWidget(QWidget *parent) :
     // 读取json文件
     read_json();
     setWindowIcon(QIcon(":/resources/laiyin.ico"));
+    setWindowTitle("登录");
+    QMediaPlaylist *musicList = new QMediaPlaylist(this);  //添加音乐列表
+    musicList->addMedia(QUrl("qrc:/music/EP1 -Morning Dew.mp3"));  //添加音乐列表
+    musicList->addMedia(QUrl("qrc:/music/EP2 -Dormant Craving.mp3"));
+    musicList->addMedia(QUrl("qrc:/music/EP3 -The cure.mp3"));
+
+
+
+    QMediaPlayer *soundPlayer = new QMediaPlayer(this);  //创建音乐播放器
+    soundPlayer->setPlaylist(musicList);  //设置音乐列表
+    soundPlayer->setVolume(40);
+    soundPlayer->play();
+    //以上会使音乐顺序播放
+
+
+
 }
 
 LogWidget::~LogWidget()

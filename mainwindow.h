@@ -14,6 +14,7 @@
 #include <QMenu>
 #include<QToolBar>
 #include<QLabel>
+#include <QMediaPlayer>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
