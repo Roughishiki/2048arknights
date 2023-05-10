@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/axqsx-7wyta-001.ico</file>
+        <file>resources/level1.png</file>
+        <file>resources/level2.png</file>
+        <file>resources/level4.png</file>
+        <file>resources/level8.png</file>
+        <file>resources/level16.png</file>
+        <file>resources/level32.png</file>
+        <file>resources/level64.png</file>
+        <file>resources/level128.png</file>
+        <file>resources/level256.png</file>
+        <file>resources/loading.png</file>
+        <file>resources/login.png</file>
+        <file>resources/level.png</file>
+        <file>resources/level512.png</file>
+        <file>resources/login1.png</file>
+        <file>resources/config.json</file>
+        <file>resources/laiyin.ico</file>
+        <file>resources/level2048.png</file>
+        <file>resources/backgame.png</file>
+        <file>resources/over1.png</file>
+        <file>resources/over2.png</file>
+        <file>resources/over3.png</file>
+        <file>music/EP1 -Morning Dew.mp3</file>
+        <file>music/EP2 -Dormant Craving.mp3</file>
+    </qresource>
+</RCC>
